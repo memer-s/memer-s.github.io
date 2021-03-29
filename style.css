@@ -1,0 +1,106 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: #212121;
+    overflow-y: hidden;
+}
+
+@keyframes anim {
+    from {
+        padding: 0;
+    }
+    to {
+        padding: 1px 4px 1px 4px;
+        background-color: rgba(255, 255, 255, 0.7);
+    }
+}
+
+@keyframes animd {
+    from {
+        padding: 1px 4px 1px 4px;
+        background-color: rgba(255, 255, 255, 0.7);
+    }
+    to {
+        padding: 0;
+    }
+}
+
+@keyframes incr {
+    from {
+        font-size: 16px; 
+    }
+    to {
+        font-size: 16.5px;
+    }
+}
+
+@keyframes decr {
+    from {
+        font-size: 16.5px;
+    }
+    to {
+        font-size: 16px;
+    }
+}
+
+.sect1 {
+    height: 82vh;
+
+}
+
+.sect1 a {
+    animation: animd;
+    animation-duration: 100ms;
+}
+
+.sect1 a:hover {
+    margin-left: 4px;
+    animation: anim;
+    animation-duration: 100ms;
+    padding: 1px 4px 1px 4px;
+    background-color: rgba(255, 255, 255, 0.7)
+}
+
+.sect2 {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    animation: decr;
+    animation-duration: 500ms;
+}
+
+.links1 {
+    margin-left: 10px;
+}
+
+.sect2:hover {
+    animation: incr;
+    animation-duration: 500ms;
+    font-size: 16.5px;
+}
+
+
+a:link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+}
+  
+
+a:visited {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+}
+  
+
+a:hover {
+    color: rgb(0, 0, 0, 0.8);
+    text-decoration: none;
+    
+    
+}
+  
+a:active {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+}
+
