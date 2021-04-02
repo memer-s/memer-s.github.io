@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css"
+    type="text/css">
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .map {
+      height: 90vh;
+      width: 100%;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
+  <title>OpenLayers example</title>
+</head>
+
+<body onload="getLocation()">
+  <div id="map" class="map"></div>
+
+  <script type="text/javascript">
+
+
+    var Options = {
+      enableHighAccuracy: true,
+    }
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, ErrorCallback, Options);
+      } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+
+    function ErrorCallback() {
+      console.error(400);
+    }
+
+    function showPosition(position) {
+      console.log(position.coords.latitude);
+      console.log(position.coords.longitude);
+      console.log(position.coords.accuracy);
+      latt = position.coords.latitude;
+      long = position.coords.longitude;
+
+
+
+      var point1 = new ol.Feature({ geometry: new ol.geom.Point(ol.proj.fromLonLat([long, latt]) )} );  
+
+      var pointStyle = new ol.style.Style({
+        image: new ol.style.Icon({
+          anchor: [0.5, 0.5],
+          scale: 2,
+          src: 'icon.png',
+        }), 
+        text: new ol.style.Text({
+          placement: 'point', 
+          fill: new ol.style.Fill({color: '#fff'}),
+          stroke: new ol.style.Stroke({color: '#000', width: '2'})
+        })
+      })
+
+      point1.setStyle(pointStyle);
+
+      var layer = new ol.layer.Vector({
+        source: new ol.source.Vector({
+          features: [
+            point1
+          ]
+        })
+      }); 
+
+      map.addLayer(layer);
+    }
+
+    var attribution = new ol.control.Attribution({
+      collapsible: false
+    });
+
+    var map = new ol.Map({
+      controls: ol.control.defaults({ attribution: false }).extend([attribution]),
+      layers: [
+        new ol.layer.Tile({ source: new ol.source.OSM() })
+      ],
+      target: 'map',
+      view: new ol.View({
+        center: ol.proj.fromLonLat([15.21326772686299, 59.277353116142706]),
+        maxZoom: 18,
+        zoom: 12
+      })
+    });
+
+
+  </script>
+</body>
+
+</html>
