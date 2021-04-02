@@ -79,6 +79,14 @@ body {
     font-size: 16.5px;
 }
 
+.prev {
+    width: 600px;
+    height: 500px;
+    border: rgba(0, 0, 0, 0.150) 1.5px solid;
+    position: absolute;
+    right: calc(50vw - 300px);
+}
+
 
 a:link {
     color: rgba(255, 255, 255, 0.7);
