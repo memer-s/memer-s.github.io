@@ -27,6 +27,16 @@ var pat = [
 //    console.log() is a SOO FUCKING SLOW.
 //
 
+function togglenumbs() {
+    // i know you can write this in one line with ? and : but fuck you
+    if(numbson) {
+        numbson = false;
+    }
+    else {
+        numbson = true;
+    }
+}
+
 for(var i = 0; i < height; i++) {
     var pg1 = [];
     for(var j = 0; j < width; j++) {
@@ -137,8 +147,8 @@ function render() {
                         break; 
                 }
                 
-                ctx.font = "15px Consolas";
-                ctx.fillText(n, j*pxs+6,i*pxs+12);
+                ctx.font = "10px Consolas";
+                ctx.fillText(n, j*pxs+2,i*pxs+8);
                 ctx.fillStyle = "black";
             }
 
